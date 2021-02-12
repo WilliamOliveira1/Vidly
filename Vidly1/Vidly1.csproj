@@ -224,6 +224,14 @@
     <Compile Include="Migrations\202102120006263_PopulateMembershipTypeNames.Designer.cs">
       <DependentUpon>202102120006263_PopulateMembershipTypeNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102120034533_setBirthdayToCustomer.cs" />
+    <Compile Include="Migrations\202102120034533_setBirthdayToCustomer.Designer.cs">
+      <DependentUpon>202102120034533_setBirthdayToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102120035579_PopulateBrithday.cs" />
+    <Compile Include="Migrations\202102120035579_PopulateBrithday.Designer.cs">
+      <DependentUpon>202102120035579_PopulateBrithday.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -342,6 +350,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102120006263_PopulateMembershipTypeNames.resx">
       <DependentUpon>202102120006263_PopulateMembershipTypeNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102120034533_setBirthdayToCustomer.resx">
+      <DependentUpon>202102120034533_setBirthdayToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102120035579_PopulateBrithday.resx">
+      <DependentUpon>202102120035579_PopulateBrithday.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
