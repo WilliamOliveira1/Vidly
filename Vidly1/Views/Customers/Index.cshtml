@@ -17,9 +17,6 @@ else
         <thead>
             <tr>
                 <th>Customer</th>
-                <th>Membership Type</th>
-                <th>Discount Rate</th>
-                <th>Birthday</th>
             </tr>
         </thead>
         <tbody>
@@ -27,24 +24,6 @@ else
             {
             <tr>
                 <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-                @if (@customer.MembershipType.DiscountRate != 0)
-                {
-                    <td>@customer.MembershipType.DiscountRate%</td>
-                }
-                else
-                {
-                    <td>No Discount</td>
-                }
-                <td>@customer.MembershipType.Name</td>
-                @if (@customer.Birthday.Year > 1940)
-                {
-                    <td>@customer.Birthday</td>
-                }
-                else
-                {
-                    <td>Birthday not found</td>
-                }
-
             </tr>
             }
         </tbody>

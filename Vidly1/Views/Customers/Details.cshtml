@@ -5,3 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Customer:  @Model.Id | Name: @Model.Name</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Membership Type</th>
+                <th>Discount Rate</th>
+                <th>Birthdate</th>
+            </tr>
+        </thead>
+        <tbody>          
+            <tr>
+                <td>@Model.MembershipType.Name</td>
+                @if (Model.MembershipType.DiscountRate != 0)
+                {
+                    <td>@Model.MembershipType.DiscountRate%</td>
+                }
+                else
+                {
+                    <td>No Discount</td>
+                }
+                @if (@Model.Birthday.Year > 1940)
+                {
+                    <td>@Model.Birthday.ToShortDateString()</td>
+                }
+                else
+                {
+                    <td>Birthdate not found</td>
+                }
+
+            </tr>            
+        </tbody>
+    </table>

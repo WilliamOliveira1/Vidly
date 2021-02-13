@@ -7,11 +7,12 @@ namespace Vidly1.Migrations
     {
         public override void Up()
         {
-            Sql("UPDATE Customers SET Birthday = '05/03/1986' WHERE Id = 1");
+            AddColumn("dbo.Customers", "Birthdate", c => c.DateTime());
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Customers", "Birthdate");
         }
     }
 }
