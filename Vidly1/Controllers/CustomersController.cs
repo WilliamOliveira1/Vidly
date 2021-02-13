@@ -37,6 +37,8 @@ namespace Vidly1.Controllers
             var customersMember = _context.Customers.Include(c => c.MembershipType).ToList();
             if (customer == null)
                 return HttpNotFound();
+            if (customersMember == null)
+                return HttpNotFound();
 
             return View(customer);
         }
