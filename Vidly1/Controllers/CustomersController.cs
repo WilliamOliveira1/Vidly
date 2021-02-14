@@ -93,5 +93,23 @@ namespace Vidly1.Controllers
 
             return View("CustomerForm", viewModel);
         }
+
+        [HttpPost]
+        public ActionResult Delete(Customer customer)
+        {
+            var deleteCustomer = _context.Customers.Find(customer.Id);
+            try
+            {
+                if (customer.Id != 0)
+                {
+                    _context.Customers.Remove(deleteCustomer);
+                    _context.SaveChanges();
+                }
+            }catch 
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            return RedirectToAction("Index", "Customers");
+         }
     }
 }
