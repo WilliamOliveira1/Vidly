@@ -36,24 +36,40 @@ namespace Vidly1.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
-            if(customer.Id == 0)
-            {
-                _context.Customers.Add(customer); //Save on memory
-            }else
-            {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
-                // TryUpdateModel(customerInDb); // This permit to update all fiields in the database for customer
 
-                customerInDb.Name = customer.Name;
-                customerInDb.Birthday = customer.Birthday;
-                customerInDb.MenbershipTypeId = customer.MenbershipTypeId;
-                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
-            }
             
-            _context.SaveChanges(); // Save on database
+                if (customer.Id == 0)
+                {
+                    _context.Customers.Add(customer); //Save on memory
+                }
+                else
+                {
+                    var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
-            return RedirectToAction("Index", "Customers");
+                    // TryUpdateModel(customerInDb); // This permit to update all fiields in the database for customer
+
+                    customerInDb.Name = customer.Name;
+                    customerInDb.Birthday = customer.Birthday;
+                    customerInDb.MenbershipTypeId = customer.MenbershipTypeId;
+                    customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                }
+
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+            else
+            {
+                _context.SaveChanges(); // Save on database
+            }                
+                return RedirectToAction("Index", "Customers");                                   
         }
 
         // GET: Customers
