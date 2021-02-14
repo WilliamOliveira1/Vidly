@@ -1,6 +1,5 @@
-﻿
-    if ($('#Customer_Name').attr('value') == "") {
+﻿if ($('#Customer_Name').attr('value') == "") {
         $("#deleteCustomerButton").hide();
-    } else {
+} else {
         $("#deleteCustomerButton").show();
-        }
+}

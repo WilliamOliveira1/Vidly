@@ -94,5 +94,24 @@ namespace Vidly1.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");
         }
+
+        [HttpPost]
+        public ActionResult Delete(Movie movie)
+        {
+            var deleteMovie = _context.Movies.Find(movie.Id);
+            try
+            {
+                if (movie.Id != 0)
+                {
+                    _context.Movies.Remove(deleteMovie);
+                    _context.SaveChanges();
+                }
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            return RedirectToAction("Index", "Movies");
+        }
     }
 }
