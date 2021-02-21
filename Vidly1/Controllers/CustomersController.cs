@@ -28,6 +28,7 @@ namespace Vidly1.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(), //This is necessary due the fact some validation is hit when shouldn't
                 MembershipTypes = membershipTypes
             };
             return View("CustomerForm", viewModel);
@@ -35,10 +36,7 @@ namespace Vidly1.Controllers
 
         [HttpPost]
         public ActionResult Save(Customer customer)
-        {
-
-
-            
+        {            
                 if (customer.Id == 0)
                 {
                     _context.Customers.Add(customer); //Save on memory
