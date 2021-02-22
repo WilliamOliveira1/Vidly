@@ -62,6 +62,7 @@ namespace Vidly1.Controllers.API
         /// </summary>
         /// <param name="id">id from customer that will be updated</param>
         /// <param name="customer">data from customer that will be updated</param>
+        [HttpPut]
         public void UpdateCustomer(int id, Customer customer)
         {
             if (!ModelState.IsValid)
