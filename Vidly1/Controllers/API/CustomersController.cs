@@ -57,6 +57,11 @@ namespace Vidly1.Controllers.API
             return customer;
         }
 
+        /// <summary>
+        /// PUT /api/customers/
+        /// </summary>
+        /// <param name="id">id from customer that will be updated</param>
+        /// <param name="customer">data from customer that will be updated</param>
         public void UpdateCustomer(int id, Customer customer)
         {
             if (!ModelState.IsValid)
@@ -79,6 +84,7 @@ namespace Vidly1.Controllers.API
         ///  DELETE /api/customers/1
         /// </summary>
         /// <param name="id">id from the customer that will be deleted</param>
+        [HttpDelete]
         public void DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
