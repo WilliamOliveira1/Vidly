@@ -42,12 +42,6 @@
         }
         <button type="submit" class="btn btn-primary">Save</button>
     }
-
-    @using (Html.BeginForm("Delete", "Customers"))
-    {
-        @Html.HiddenFor(m => m.Customer.Id)
-        <button id="deleteCustomerButton" type="submit" class="btn btn-danger" value="Delete">Delete</button>
-    }
 </div>
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/Customers/customers.js"></script>
