@@ -9,14 +9,7 @@
 <p>
     @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
 </p>
-
-@if (!Model.Any())
-{
-    <p>We don't have any customers yet.</p>
-}
-else
-{
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
@@ -24,23 +17,15 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)
-                    </td>
-                    <td>
-                        <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
-                    </td>
-                </tr>
-            }
+
         </tbody>
     </table>
-}
 
-<script src="~/Scripts/jquery-3.4.1.js"></script>
-<script src="~/Scripts/Customers/customers.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="~/Scripts/Customers/customers.js" type="text/javascript"></script>
+
 @section scripts
     {
     @Scripts.Render("~/bundles/jqueryval")
