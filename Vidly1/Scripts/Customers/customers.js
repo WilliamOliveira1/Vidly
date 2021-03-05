@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(".js-delete").on("click", function () {
+    $(".js-delete").click(function () {
         var button = $(this);
         bootbox.confirm("Are you sure you want to delete this customer?", function (result) {
             if (result) {

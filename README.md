@@ -16,3 +16,11 @@ Rent Movie Site
     * install-package bootbox -version:4.3.0  
 
 * this project used this version
+
+### To use jQuery.dataTables
+
+* In the package manager console Run:
+
+    * install-package jquery.datatables -version:1.10.11  
+
+* this project used this version
