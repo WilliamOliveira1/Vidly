@@ -11,18 +11,22 @@
     @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
 </p>
 
-<table class="table table-bordered table-hover">
+<table id="movies" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Movie</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model)
-        {
-        <tr>
-            <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
-        </tr>
-        }
     </tbody>
 </table>
+
+<script src="~/Scripts/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="~/Scripts/Movies/Movies.js" type="text/javascript"></script>
+
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}
