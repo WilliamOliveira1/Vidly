@@ -22,7 +22,7 @@ namespace Vidly1.Models
     {
         public DbSet <Customer> Customers{ get; set; }
         public DbSet<Movie> Movies{ get; set; }
-        public DbSet<MembershipTypes> MembershipTypes { get; set; }
+        public DbSet<MembershipType> MembershipType { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
         public ApplicationDbContext()

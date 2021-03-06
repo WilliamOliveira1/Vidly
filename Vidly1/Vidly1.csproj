@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,10 +203,6 @@
     <Compile Include="Migrations\202102130137008_initial.cs" />
     <Compile Include="Migrations\202102130137008_initial.Designer.cs">
       <DependentUpon>202102130137008_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102130206465_PopulateGenres.cs" />
-    <Compile Include="Migrations\202102130206465_PopulateGenres.Designer.cs">
-      <DependentUpon>202102130206465_PopulateGenres.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202102130218057_PopulateMovies.cs" />
     <Compile Include="Migrations\202102130218057_PopulateMovies.Designer.cs">
@@ -219,13 +216,13 @@
     <Compile Include="Migrations\202102130306554_PopulateTypes.Designer.cs">
       <DependentUpon>202102130306554_PopulateTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102130354537_PopulateGenres1.cs" />
-    <Compile Include="Migrations\202102130354537_PopulateGenres1.Designer.cs">
-      <DependentUpon>202102130354537_PopulateGenres1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202102130355399_PopulateMoviesData1.cs" />
     <Compile Include="Migrations\202102130355399_PopulateMoviesData1.Designer.cs">
       <DependentUpon>202102130355399_PopulateMoviesData1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050338172_new-databse.cs" />
+    <Compile Include="Migrations\202103050338172_new-databse.Designer.cs">
+      <DependentUpon>202103050338172_new-databse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -233,7 +230,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MembershipTypes.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -507,9 +504,6 @@
     <EmbeddedResource Include="Migrations\202102130137008_initial.resx">
       <DependentUpon>202102130137008_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102130206465_PopulateGenres.resx">
-      <DependentUpon>202102130206465_PopulateGenres.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102130218057_PopulateMovies.resx">
       <DependentUpon>202102130218057_PopulateMovies.cs</DependentUpon>
     </EmbeddedResource>
@@ -519,11 +513,11 @@
     <EmbeddedResource Include="Migrations\202102130306554_PopulateTypes.resx">
       <DependentUpon>202102130306554_PopulateTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102130354537_PopulateGenres1.resx">
-      <DependentUpon>202102130354537_PopulateGenres1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102130355399_PopulateMoviesData1.resx">
       <DependentUpon>202102130355399_PopulateMoviesData1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050338172_new-databse.resx">
+      <DependentUpon>202103050338172_new-databse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

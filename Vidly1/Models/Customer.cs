@@ -20,7 +20,7 @@ namespace Vidly1.Models
 
         public bool IsSubscribedToNewsLetter { get; set; }
 
-        public MembershipTypes MembershipType { get; set; }
+        public MembershipType MembershipType { get; set; }
 
         [Required] // This way we mark a fild that must be used by dataBase
         [Display(Name = "Membership Type")] // This display name overwrite the  name of the property

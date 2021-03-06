@@ -19,6 +19,8 @@ namespace Vidly1.Dtos
         //Min18YearsIfAMember is for Customer and not for CustomerDto
         public DateTime Birthday { get; set; }
 
+        public MembershipTypeDto MembershipType { get; set; }
+
         public bool IsSubscribedToNewsLetter { get; set; }
 
         public byte MenbershipTypeId { get; set; }

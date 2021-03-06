@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Vidly1.Dtos;
 using Vidly1.Models;
+using System.Data.Entity;
+
 
 namespace Vidly1.Controllers.API
 {
@@ -34,7 +36,10 @@ namespace Vidly1.Controllers.API
         /// <returns>return single customer</returns>
         public IHttpActionResult GetCustomer(int id)
         {
-            var customerDtos = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customerDtos = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
 
             return Ok(customerDtos);
         }
