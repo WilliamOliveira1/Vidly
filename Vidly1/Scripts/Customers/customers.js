@@ -11,8 +11,8 @@
                     return "<a href=/customers/edit/" + customer.id +  '>' + customer.name + '</a>';
                 }
             },
-           /* {
-                data: "name"
+           /*{
+               data: "membershipType.name"
             },*/
             {
                 data: "id",

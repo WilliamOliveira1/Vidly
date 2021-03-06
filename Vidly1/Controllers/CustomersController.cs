@@ -29,7 +29,7 @@ namespace Vidly1.Controllers
             var viewModel = new CustomerFormViewModel
             {
                 Customer = new Customer(), //This is necessary due the fact some validation is hit when shouldn't
-                MembershipType = membershipType
+                MembershipTypes = membershipType
             };
             return View("CustomerForm", viewModel);
         }
@@ -50,7 +50,7 @@ namespace Vidly1.Controllers
 
                     customerInDb.Name = customer.Name;
                     customerInDb.Birthday = customer.Birthday;
-                    customerInDb.MenbershipTypeId = customer.MenbershipTypeId;
+                    customerInDb.MembershipTypeId = customer.MembershipTypeId;
                     customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
                 }
 
@@ -59,7 +59,7 @@ namespace Vidly1.Controllers
                 var viewModel = new CustomerFormViewModel
                 {
                     Customer = customer,
-                    MembershipType = _context.MembershipType.ToList()
+                    MembershipTypes = _context.MembershipType.ToList()
                 };
 
                 return View("CustomerForm", viewModel);
@@ -101,7 +101,7 @@ namespace Vidly1.Controllers
             var viewModel = new CustomerFormViewModel
             {
                 Customer = customer,
-                MembershipType = _context.MembershipType.ToList()
+                MembershipTypes = _context.MembershipType.ToList()
             };
 
             return View("CustomerForm", viewModel);

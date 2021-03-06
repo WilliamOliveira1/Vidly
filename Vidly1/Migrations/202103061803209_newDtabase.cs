@@ -3,7 +3,7 @@ namespace Vidly1.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class setdata : DbMigration
+    public partial class newDtabase : DbMigration
     {
         public override void Up()
         {
@@ -13,24 +13,23 @@ namespace Vidly1.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 255),
-                        Birthday = c.DateTime(nullable: false),
                         IsSubscribedToNewsLetter = c.Boolean(nullable: false),
-                        MenbershipTypeId = c.Byte(nullable: false),
-                        MembershipType_Id = c.Byte(),
+                        MembershipTypeId = c.Byte(nullable: false),
+                        Birthday = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.MembershipTypes", t => t.MembershipType_Id)
-                .Index(t => t.MembershipType_Id);
+                .ForeignKey("dbo.MembershipTypes", t => t.MembershipTypeId, cascadeDelete: true)
+                .Index(t => t.MembershipTypeId);
             
             CreateTable(
                 "dbo.MembershipTypes",
                 c => new
                     {
                         Id = c.Byte(nullable: false),
-                        SingUpFee = c.Short(nullable: false),
+                        Name = c.String(nullable: false),
+                        SignUpFee = c.Short(nullable: false),
                         DurationInMonths = c.Byte(nullable: false),
                         DiscountRate = c.Byte(nullable: false),
-                        Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -135,7 +134,7 @@ namespace Vidly1.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Movies", "GenreId", "dbo.Genres");
-            DropForeignKey("dbo.Customers", "MembershipType_Id", "dbo.MembershipTypes");
+            DropForeignKey("dbo.Customers", "MembershipTypeId", "dbo.MembershipTypes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -143,7 +142,7 @@ namespace Vidly1.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Movies", new[] { "GenreId" });
-            DropIndex("dbo.Customers", new[] { "MembershipType_Id" });
+            DropIndex("dbo.Customers", new[] { "MembershipTypeId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");

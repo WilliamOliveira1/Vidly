@@ -10,20 +10,19 @@ namespace Vidly1.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter customer's name")] // This is how we can overwrite the default error message
-        [StringLength(255)] // This is how we limit the string length
+        [Required]
+        [StringLength(255)]
         public string Name { get; set; }
-
-        [Display(Name = "Date of birth")]
-        [Min18YearsIfAMember]
-        public DateTime Birthday { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
 
         public MembershipType MembershipType { get; set; }
 
-        [Required] // This way we mark a fild that must be used by dataBase
-        [Display(Name = "Membership Type")] // This display name overwrite the  name of the property
-        public byte MenbershipTypeId { get; set; }
+        [Display(Name = "Membership Type")]
+        public byte MembershipTypeId { get; set; }
+
+        [Display(Name = "Date of birth")]
+        [Min18YearsIfAMember]
+        public DateTime Birthday { get; set; }
     }
 }
