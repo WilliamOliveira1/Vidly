@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#customers").DataTable({
+    var table = $("#customers").DataTable({
         ajax: {
             url: "api/customers",
             dataSrc: ""
@@ -11,13 +11,13 @@
                     return "<a href=/customers/edit/" + customer.id +  '>' + customer.name + '</a>';
                 }
             },
-           /*{
+           {
                data: "membershipType.name"
-            },*/
+            },
             {
                 data: "id",
                 render: function (data) {
-                    return "<button class='btn-link js-delete' data-customer-id" + data + ">Delete</button>"
+                    return "<button class='btn-link js-delete' data-customer-id = ' " + data + " '>Delete</button>"
                 }
             },
         ]
@@ -30,7 +30,7 @@
                     url: "api/customers/" + button.attr("data-customer-id"),
                     method: "DELETE",
                     success: function () {
-                        button.parents("tr").remove();
+                        table.row(button.parents("tr")).remove().draw();
                     }
                 })
             }
