@@ -7,7 +7,10 @@ namespace Vidly1
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute()); //This redirect to an error page when an exception is throw 
+            //This make a change in the way taht we acess our application
+            //Will need login to use the application
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }
