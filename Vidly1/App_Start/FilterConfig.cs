@@ -11,6 +11,9 @@ namespace Vidly1
             //This make a change in the way taht we acess our application
             //Will need login to use the application
             filters.Add(new AuthorizeAttribute());
+
+            //This is needed to run our application only in HTTPS 
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
