@@ -25,13 +25,12 @@ namespace Vidly1.Controllers
             _context.Dispose();
         }
 
-        // GET: Movies/
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            if (User.IsInRole(RoleName.CanManageMovies))//Check if the user have permission to manage data in view
+                return View("List");
 
-            return View(movies);
-
+                return View("ReadOnlyList");
         }
 
         public ActionResult Details(int id)
@@ -46,6 +45,7 @@ namespace Vidly1.Controllers
             }
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ViewResult New()
         {
             var movie = new Movie { ReleaseDate = DateTime.Now };
