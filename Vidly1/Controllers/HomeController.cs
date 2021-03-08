@@ -9,6 +9,7 @@ namespace Vidly1.Controllers
     [AllowAnonymous] //This allow to acess the home page without log in
     public class HomeController : Controller
     {
+        [OutputCache]
         public ActionResult Index()
         {
             return View();
