@@ -11,19 +11,42 @@ namespace Vidly.Controllers.Api
 {
     public class MoviesController : ApiController
     {        
+        /// <summary>
+        /// 
+        /// </summary>
         private ApplicationDbContext _context;
 
+        /// <summary>
+        ///  A constructor to inintialize _context
+        /// </summary>
         public MoviesController()
         {
             _context = new ApplicationDbContext();
         }
-        public IEnumerable<MovieDto> GetMovies()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<MovieDto> GetMovies(string query = null)
         {
-            return _context.Movies
+            var moviesQuery = _context.Movies
                 .Include(m => m.Genre)
+                .Where(m => m.NumberAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            return moviesQuery
                 .ToList()
                 .Select(Mapper.Map<Movie, MovieDto>);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult GetMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
@@ -34,6 +57,11 @@ namespace Vidly.Controllers.Api
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="movieDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
@@ -48,6 +76,12 @@ namespace Vidly.Controllers.Api
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="movieDto"></param>
+        /// <returns></returns>
         [HttpPut]
         public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
@@ -58,6 +92,7 @@ namespace Vidly.Controllers.Api
 
             if (movieInDb == null)
                 return NotFound();
+            
 
             Mapper.Map(movieDto, movieInDb);
 
@@ -66,6 +101,11 @@ namespace Vidly.Controllers.Api
             return Ok();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         public IHttpActionResult DeleteMovie(int id)
         {

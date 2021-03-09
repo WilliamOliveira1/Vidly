@@ -25,7 +25,7 @@ Rent Movie Site
 
 * this project used this version
 
-### To use set Facebook login
+### To set Facebook login
 
 * In the package manager console Run:
 
@@ -37,3 +37,15 @@ Rent Movie Site
 
     * install package : Install-Package glimpse.mvc5
     * install package : Install-Package glimpse.ef6
+
+### To use Twitter.Typeahead
+
+* In the package manager console Run:
+
+    * install package : Install-Package Twitter.Typeahead
+
+### To use toastr
+
+* In the package manager console Run:
+
+    * install package : Install-Package toastr
