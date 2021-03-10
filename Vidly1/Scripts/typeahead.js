@@ -48,12 +48,20 @@
 
         vm.movieIds.push(movie.id);
     });
+
+    $.validator.addMethod("atLeastOneMovie", function () {
+        return vm.movieIds.length > 0;
+    }, "please select at least one movie");
+
+
     $.validator.addMethod("validCustomer", function () {
         return vm.customerId && vm.customerId !== 0;
     }, "Please select a valid customer.");
+
     $.validator.addMethod("atLeastOneMovie", function () {
         return vm.movieIds.length > 0;
     }, "Please select at least one movie.");
+
     var validator = $("#newRental").validate({
         submitHandler: function () {
             $.ajax({
