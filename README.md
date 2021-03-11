@@ -44,8 +44,14 @@ Rent Movie Site
 
     * install package : Install-Package Twitter.Typeahead
 
-### To use toastr
+### To use toastr (used om front to show error messages)
 
 * In the package manager console Run:
 
     * install package : Install-Package toastr
+
+### To use Elmah (for log to access localhost:\*\elmah.axd )
+
+* In the package manager console Run:
+
+    * install package : Install-Package Elmah
